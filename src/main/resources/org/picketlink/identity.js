@@ -17,12 +17,25 @@ org.picketlink.Identity = xw.NonVisual.extend({
     xw.EL.notify(this.binding.value);
     xw.Event.fire("org.picketlink.identity.loggedIn");
   },
+  logoutCallback: function() {
+    this.loggedIn = pl.loggedIn;
+    this.account = pl.account;
+    xw.EL.notify(this.binding.value);
+    xw.Event.fire("org.picketlink.identity.loggedOut");
+  },
   login: function(user, pass) {
     var that = this;
     var cb = function() {
       that.loginCallback();
     }
     pl.login(user, pass, cb);
+  },
+  logout: function() {
+    var that = this;
+    var cb = function() {
+      that.logoutCallback();
+    }
+    pl.logout(cb);
   },
   canResolve: function(expr) {    
     return expr == this.binding.value;
