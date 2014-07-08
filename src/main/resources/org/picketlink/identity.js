@@ -4,12 +4,16 @@ org.picketlink.Identity = xw.NonVisual.extend({
   _constructor: function() {
     this._super(false);
     this.registerProperty("binding", {default: "identity"});
+    this.registerProperty("basePath", {default: "", listener: this.setBasePath});
     this.registerProperty("url");
     this.loggedIn = false;
     this.account = null;
   },
   open: function() {
     xw.EL.registerResolver(this);  
+  },
+  setBasePath: function(basePath) {
+    pl.basePath = basePath;
   },
   loginCallback: function() {
     this.loggedIn = pl.loggedIn;
