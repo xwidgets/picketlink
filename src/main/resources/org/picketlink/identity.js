@@ -5,24 +5,31 @@ org.picketlink.Identity = xw.NonVisual.extend({
     this._super(false);
     this.registerProperty("binding", {default: "identity"});
     this.registerProperty("basePath", {default: "", listener: this.setBasePath});
-    this.registerProperty("url");
-    this.loggedIn = false;
-    this.account = null;
   },
   open: function() {
-    xw.EL.registerResolver(this);  
+    xw.EL.registerResolver(this);
+    if (xw.Sys.isUndefined(pl.loggedIn)) {
+      var that = this;
+      var cb = function() {
+        that.loginCallback();
+      };
+      pl.status(cb);
+    }
+  },
+  isLoggedIn: function() {
+    return pl.loggedIn;
+  },
+  getAccount: function() {
+    return pl.account;
   },
   setBasePath: function(basePath) {
     pl.basePath = basePath;
   },
   loginCallback: function() {
-    this.loggedIn = pl.loggedIn;
-    this.account = pl.account;
     xw.EL.notify(this.binding.value);
     xw.Event.fire("org.picketlink.identity.loggedIn");
   },
   logoutCallback: function() {
-    this.loggedIn = pl.loggedIn;
     this.account = pl.account;
     xw.EL.notify(this.binding.value);
     xw.Event.fire("org.picketlink.identity.loggedOut");

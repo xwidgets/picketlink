@@ -5,8 +5,8 @@ org.picketlink.RequestAuthenticator = xw.NonVisual.extend({
     this._super(false);
   },
   decorate: function(request) {
-    if (pl.token != null) {
-      request.setRequestHeader("Authorization", "Token " + pl.token);
+    if (pl.getToken() != null) {
+      request.setRequestHeader("Authorization", "Token " + pl.getToken());
     }
   },
   toString: function() {
