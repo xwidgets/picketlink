@@ -27,12 +27,16 @@ org.picketlink.Identity = xw.NonVisual.extend({
   },
   loginCallback: function() {
     xw.EL.notify(this.binding.value);
-    xw.Event.fire("org.picketlink.identity.loggedIn");
+    if (this.isLoggedIn()) {
+      xw.Event.fire("org.picketlink.identity.loggedIn");
+    }
   },
   logoutCallback: function() {
     this.account = pl.account;
     xw.EL.notify(this.binding.value);
-    xw.Event.fire("org.picketlink.identity.loggedOut");
+    if (!this.isLoggedIn()) {
+      xw.Event.fire("org.picketlink.identity.loggedOut");
+    }
   },
   login: function(user, pass) {
     var that = this;
