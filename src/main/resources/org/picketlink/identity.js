@@ -19,9 +19,6 @@ org.picketlink.Identity = xw.NonVisual.extend({
   isLoggedIn: function() {
     return pl.loggedIn;
   },
-  getAccount: function() {
-    return pl.account;
-  },
   setBasePath: function(basePath) {
     pl.basePath = basePath;
   },
@@ -32,7 +29,6 @@ org.picketlink.Identity = xw.NonVisual.extend({
     }
   },
   logoutCallback: function() {
-    this.account = pl.account;
     xw.EL.notify(this.binding.value);
     if (!this.isLoggedIn()) {
       xw.Event.fire("org.picketlink.identity.loggedOut");
