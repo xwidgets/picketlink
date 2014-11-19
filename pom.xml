@@ -59,10 +59,17 @@
     
     <dependency>
        <groupId>org.picketlink</groupId>
-       <artifactId>picketlink</artifactId>
+       <artifactId>picketlink-api</artifactId>
        <version>${version.picketlink}</version>
        <scope>compile</scope>
     </dependency>
+    
+    <dependency>
+       <groupId>org.picketlink</groupId>
+       <artifactId>picketlink-idm-api</artifactId>
+       <version>${version.picketlink}</version>
+       <scope>compile</scope>
+    </dependency>    
     
 	</dependencies>
     
