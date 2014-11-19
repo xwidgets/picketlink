@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>14</version>
+  </parent>  
 
   <groupId>xwidgets</groupId>
   <artifactId>xwidgets-picketlink</artifactId>
@@ -31,17 +37,32 @@
 	</dependencyManagement>  
   
   <dependencies>
+  
+    <!-- EJB -->
+    
 	  <dependency>
 	    <groupId>org.jboss.spec.javax.ejb</groupId>
 	    <artifactId>jboss-ejb-api_3.1_spec</artifactId>
 	    <scope>provided</scope>
 	  </dependency>
 	  
+	  <!-- Java Transaction API -->
+	  
+	  <dependency>
+      <groupId>org.jboss.spec.javax.transaction</groupId>
+      <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    
+    <!-- XWidgets base library -->
+	  
 	  <dependency>
 	    <groupId>xwidgets</groupId>
 	    <artifactId>xwidgets</artifactId>
 	    <version>${version.xwidgets}</version>
 	  </dependency>
+	  
+	  <!-- CDI -->
 	  
     <dependency>
       <groupId>javax.enterprise</groupId>
@@ -69,7 +90,14 @@
        <artifactId>picketlink-idm-api</artifactId>
        <version>${version.picketlink}</version>
        <scope>compile</scope>
-    </dependency>    
+    </dependency>
+    
+    <dependency>
+       <groupId>org.picketlink</groupId>
+       <artifactId>picketlink-json</artifactId>
+       <version>${version.picketlink}</version>
+       <scope>compile</scope>
+    </dependency> 
     
 	</dependencies>
     
