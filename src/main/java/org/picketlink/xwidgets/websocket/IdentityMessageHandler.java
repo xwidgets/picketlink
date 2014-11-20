@@ -7,6 +7,7 @@ import javax.websocket.Session;
 import org.xwidgets.websocket.Message;
 import org.xwidgets.websocket.MessageHandler;
 import org.picketlink.idm.IdentityManager;
+import org.picketlink.idm.credential.Credentials;
 import org.picketlink.idm.credential.TokenCredential;
 import org.picketlink.xwidgets.jws.JWSToken;
 
@@ -22,11 +23,16 @@ public class IdentityMessageHandler {
     @MessageHandler("identity.login")
     public void login(Message message, Session session)
     {
-        TokenCredential jwtToken = new TokenCredential(new JWSToken(
-                message.getPayload().get("jwtToken").toString()));
+        String encodedToken = message.getPayload().get("jwtToken").toString();
+        JWSToken token = new JWSToken(encodedToken);
+        TokenCredential credential = new TokenCredential(token);
 
-        identityManager.validateCredentials(jwtToken);
+        identityManager.validateCredentials(credential);
 
-        session.getUserProperties();
+        if (credential.getStatus().equals(Credentials.Status.VALID))
+        {
+           session.getUserProperties().put("identity.userId", 
+                   credential.getValidatedAccount().getId());
+        }
     }
 }
