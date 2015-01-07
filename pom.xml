@@ -73,9 +73,9 @@
     <!-- XWidgets base library -->
 	  
 	  <dependency>
-	    <groupId>xwidgets</groupId>
+	    <groupId>org.xwidgets</groupId>
 	    <artifactId>xwidgets</artifactId>
-	    <version>${version.xwidgets}</version>
+	    <version>${project.version}</version>
 	  </dependency>
 	  
 	  <!-- CDI -->
