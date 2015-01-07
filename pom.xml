@@ -18,7 +18,6 @@
     <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
     <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>    
     <version.jboss.bom>1.0.7.CR1</version.jboss.bom>
-    <version.xwidgets>1.0-SNAPSHOT</version.xwidgets>
     <version.picketlink>2.7.0.CR2</version.picketlink>
   </properties>
  
