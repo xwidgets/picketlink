@@ -18,7 +18,9 @@
     <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
     <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>    
     <version.jboss.bom>1.0.7.CR1</version.jboss.bom>
-    <version.picketlink>2.7.0.CR2</version.picketlink>
+    <jboss.logging.version>3.1.1.GA</jboss.logging.version>
+    <version.picketlink>2.7.0.CR3</version.picketlink>
+    <version.deltaspike>1.0.0</version.deltaspike>
   </properties>
  
   <name>XWidgets-PicketLink</name>
@@ -48,9 +50,14 @@
 			  <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>javax.ws.rs</groupId>
+        <artifactId>javax.ws.rs-api</artifactId>
+        <version>2.0</version>
+      </dependency>
 		</dependencies>
 	</dependencyManagement>  
-  
+	 
   <dependencies>
   
     <!-- EJB -->
@@ -113,6 +120,30 @@
        <version>${version.picketlink}</version>
        <scope>compile</scope>
     </dependency> 
+    
+    <dependency>
+       <groupId>org.picketlink</groupId>
+       <artifactId>picketlink-deltaspike</artifactId>
+       <version>${version.picketlink}</version>
+       <scope>compile</scope>
+    </dependency>     
+    
+    <!-- JBoss Logging -->
+  
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+      <version>${jboss.logging.version}</version>
+      <scope>provided</scope>
+    </dependency>    
+    
+    <!-- JAX-RS -->
+
+    <dependency>
+       <groupId>javax.ws.rs</groupId>
+       <artifactId>javax.ws.rs-api</artifactId>
+       <scope>provided</scope>
+    </dependency>
     
 	</dependencies>
     
